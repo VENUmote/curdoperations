@@ -1,0 +1,52 @@
+### Test the REST API from inside VS Code
+### Install the "REST Client" extension, start the backend, then click "Send Request" above each block.
+
+@base = http://localhost:8080/api/students
+
+### READ all students
+GET {{base}}
+
+### READ with search
+GET {{base}}?search=computer
+
+### READ one student
+GET {{base}}/1
+
+### CREATE a student  (201 Created)
+POST {{base}}
+Content-Type: application/json
+
+{
+  "name": "Kiran Rao",
+  "email": "kiran.rao@college.edu",
+  "rollNo": "CS2099",
+  "department": "Computer Science",
+  "yearOfStudy": 2
+}
+
+### UPDATE a student
+PUT {{base}}/1
+Content-Type: application/json
+
+{
+  "name": "Asha Reddy",
+  "email": "asha.reddy@college.edu",
+  "rollNo": "CS2041",
+  "department": "Information Technology",
+  "yearOfStudy": 3
+}
+
+### DELETE a student  (204 No Content)
+DELETE {{base}}/2
+
+### Validation error example  (400 Bad Request)
+POST {{base}}
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "not-an-email",
+  "rollNo": "x",
+  "department": "CSE",
+  "yearOfStudy": 7
+}

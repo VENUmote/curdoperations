@@ -1,0 +1,38 @@
+{
+  // Run and Debug panel (Ctrl+Shift+D) -> pick a configuration -> press F5
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Backend: Spring Boot (H2 - no setup)",
+      "request": "launch",
+      "mainClass": "com.example.studentcrud.StudentCrudApplication",
+      "projectName": "student-crud",
+      "cwd": "${workspaceFolder}/backend"
+    },
+    {
+      "type": "java",
+      "name": "Backend: Spring Boot (MySQL)",
+      "request": "launch",
+      "mainClass": "com.example.studentcrud.StudentCrudApplication",
+      "projectName": "student-crud",
+      "cwd": "${workspaceFolder}/backend",
+      "args": "--spring.profiles.active=mysql"
+    },
+    {
+      "type": "msedge",
+      "name": "Frontend: React in Edge",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/frontend",
+      "preLaunchTask": "Frontend: start dev server"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack: Backend + Frontend",
+      "configurations": ["Backend: Spring Boot (H2 - no setup)", "Frontend: React in Edge"],
+      "stopAll": true
+    }
+  ]
+}
